@@ -1,4 +1,5 @@
 
+#dashboard_project/settings.py
 from decouple import config
 from pathlib import Path
 
@@ -9,14 +10,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i*17oa5+5qm+n_(vo86l_m$&t1us)3zet-=8s7nrjmd6^#7hbq'
+SECRET_KEY = config('SECRET_KEY')          # ← importación desde .env
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -29,8 +28,26 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashboard_app',
     'corsheaders',
+    'django_auth_ldap'  # opcional, para admin de grupos
 
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django_auth_ldap.backend.LDAPBackend',     # 1º intenta LDAP
+    'django.contrib.auth.backends.ModelBackend' # 2º superusers locales
+]
+
+# Importa el módulo LDAP
+try:
+    from .ldap_settings import *   # noqa
+except ImportError:
+    pass
+
+# ------------------- Redirigir al dashboard tras iniciar / cerrar sesión ----------------------
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,10 +77,6 @@ TEMPLATES = [
     },
 ]
 
-# ------------------- Redirigir al dashboard tras iniciar / cerrar sesión ----------------------
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 
 # (opcional) ubicá las plantillas 'registration' en la misma app
@@ -142,3 +155,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ---- LOGGING: envía django_auth_ldap a la consola -------------------
+import sys, logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "django_auth_ldap": {
+            "handlers": ["console"],
+            "level": "DEBUG",      # <— ya está
+        },
+        "ldap": {                  # <— añade este bloque
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+    },
+}
