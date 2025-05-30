@@ -60,9 +60,11 @@ TEMPLATES = [
     },
 ]
 
-# Redirigir al dashboard tras iniciar / cerrar sesión
+# ------------------- Redirigir al dashboard tras iniciar / cerrar sesión ----------------------
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
 
 # (opcional) ubicá las plantillas 'registration' en la misma app
 TEMPLATES[0]['DIRS'] += [ BASE_DIR / 'dashboard_app' / 'templates' ]
@@ -71,7 +73,7 @@ TEMPLATES[0]['DIRS'] += [ BASE_DIR / 'dashboard_app' / 'templates' ]
 WSGI_APPLICATION = 'dashboard_project.wsgi.application'
 
 
-# Database
+# ---------- default  Database --------------------------
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
@@ -94,9 +96,6 @@ DATABASES = {
     }
 }
 """
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 

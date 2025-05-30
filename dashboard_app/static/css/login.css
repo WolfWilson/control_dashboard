@@ -1,0 +1,33 @@
+/* Fondo centrado */
+#login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--clr-info-light);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Tarjeta */
+.login-card {
+    background: var(--clr-white);
+    padding: 2.5rem 3rem;
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+/* Icono grande arriba */
+.login-icon {
+    font-size: 3rem;
+    color: var(--clr-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Botón full-width */
+.login-card button {
+    width: 100%;
+    margin-top: 1rem;
+}

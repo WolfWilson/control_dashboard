@@ -1,6 +1,7 @@
+#dashboard_app/urls.py
 from django.urls import path
 from django.views.generic import TemplateView
-from .views import DashboardHomeView, ExpedienteView
+from .views import DashboardHomeView, ExpedienteView, BlankView
 
 app_name = 'dashboard_app'
 
@@ -15,4 +16,6 @@ urlpatterns = [
     path('graficos/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='graficos'),
     path('correo/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='correo'),
     path('configuracion/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='configuracion'),
+    path('usuario/', BlankView.as_view(), name='usuario'),
+
 ]
