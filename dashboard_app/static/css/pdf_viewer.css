@@ -1,0 +1,132 @@
+.pdf-viewer {
+    display: flex;
+    gap: 1rem;
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    padding: 1rem; /* Agrega espacio interno general */
+    max-width: 95%; /* Limita el ancho máximo del contenedor */
+    box-sizing: border-box; /* Asegura que el padding no exceda el tamaño total */
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 150px;
+    border-right: 1px solid #ccc;
+    padding-right: 1rem;
+}
+
+.pdf-canvas {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%; /* Se adapta al tamaño del contenedor */
+    height: auto;
+    margin: 0 auto; /* Centra el canvas horizontalmente */
+    padding: 10px; /* Agrega espacio interno al canvas */
+}
+
+/* Ajusta el contenedor del iframe */
+iframe {
+    width: 100%; /* Asegura que use todo el ancho disponible */
+    height: calc(100vh - 50px); /* Calcula la altura restante menos un margen inferior */
+    border: none; /* Elimina bordes adicionales del iframe */
+    margin: 0 auto; /* Centra el iframe horizontalmente */
+    box-sizing: border-box;
+    padding: 10px; /* Espaciado interior */
+    background: #f9f9f9; /* Fondo claro para mejor contraste */
+}
+
+/* Ajusta los márgenes y espaciado para todo el contenedor */
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Contenedor general del formulario */
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Espacio entre los elementos */
+    margin: 20px auto; /* Centrado vertical y horizontal */
+    padding: 1rem; /* Espaciado interno */
+    background-color: #f7f9fc; /* Fondo claro */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo de los labels */
+.form-container label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 0.5rem;
+}
+
+/* Estilo de los inputs */
+.form-container input[type="text"] {
+    width: 120px; /* Ancho del campo */
+    padding: 8px; /* Espaciado interno */
+    font-size: 14px;
+    border: 1px solid #ccc; /* Borde del campo */
+    border-radius: 4px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave */
+
+    /* Fondo claro */
+    background-color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto hover en los inputs */
+.form-container input[type="text"]:hover,
+.form-container input[type="text"]:focus {
+    border-color: #007bff; /* Borde azul al enfocar */
+    outline: none; /* Sin borde extra */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del botón */
+.form-container button {
+    background-color: #007bff; /* Azul primario */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer; /* Cursor de mano */
+    transition: all 0.3s ease; /* Transición suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Efecto hover en el botón */
+.form-container button:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+/* Efecto activo en el botón */
+.form-container button:active {
+    background-color: #003d80; /* Azul aún más oscuro */
+    transform: scale(0.98); /* Efecto de clic */
+}
+
+/* Adaptación para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column; /* Apila los elementos */
+        gap: 0.5rem; /* Reduce el espacio */
+    }
+
+    .form-container input[type="text"] {
+        width: 100%; /* Ancho completo */
+    }
+
+    .form-container button {
+        width: 100%; /* Botón ancho completo */
+    }
+}
+

@@ -1,0 +1,42 @@
+/* Estilo para el contenedor de la tabla */
+#tabla_resultados {
+    width: 100%;
+    border-collapse: collapse; /* Eliminar espacio entre bordes */
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado de la tabla */
+#tabla_resultados thead {
+    background-color: #4CAF50; /* Color de fondo del encabezado */
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+#tabla_resultados th {
+    padding: 12px; /* Espaciado en celdas del encabezado */
+    border-bottom: 2px solid #dddddd; /* Borde inferior */
+}
+
+/* Filas de la tabla */
+#tabla_resultados tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo alternado */
+}
+
+#tabla_resultados tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Celdas de la tabla */
+#tabla_resultados td {
+    padding: 10px; /* Espaciado en celdas de datos */
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+}
+
+/* Efecto hover para filas */
+#tabla_resultados tbody tr:hover {
+    background-color: #f1f1f1; /* Color al pasar el mouse */
+    cursor: pointer;
+}

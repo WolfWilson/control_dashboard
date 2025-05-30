@@ -1,0 +1,168 @@
+/* Importar las variables correctamente */
+@import url('./var_secciones.css'); /* Ajusta la ruta si está en otra carpeta */
+
+/* ::::::::: Contenedor General ::::::::: */
+.content-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Asegura que los elementos no ocupen más espacio del necesario */
+    background-color: var(--panel-background); /* Fondo del panel */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1200px;
+    height: auto; /* Altura adaptativa */
+    max-height: calc(100vh - 40px); /* Limita la altura al 100% menos márgenes */
+    overflow-y: auto; /* Barra de desplazamiento vertical solo si es necesario */
+    overflow-x: hidden; /* Oculta barras horizontales */
+    transition: all 0.3s ease;
+    position: relative; /* Asegura que no interfiera con otros elementos */
+    z-index: 1; /* Nivel bajo para evitar conflictos visuales */
+}
+
+/* ::::::::: Encabezado ::::::::: */
+.header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color); /* Gris oscuro */
+}
+.highlight {
+    font-weight: bold; /* Negrita solo para labels */
+    color: var(--secondary-color); /* Color para diferenciarlo, opcional */
+    font-size: 14px; /* Asegúrate de un tamaño consistente */
+}
+
+
+/* ::::::::: Formulario ::::::::: */
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espacio uniforme entre elementos */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten */
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid var(--divider-color); /* Línea divisora */
+    border-radius: 8px;
+    background-color: var(--panel-background); /* Fondo claro */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.form-container label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--secondary-color); /* Gris oscuro */
+    margin-right: 5px; /* Espaciado entre label e input */
+}
+
+.form-container input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid var(--input-border); /* Borde de input */
+    border-radius: 4px;
+    font-size: 14px;
+    width: calc(20% - 10px); /* Ocupa el 20% del ancho disponible */
+    min-width: 120px; /* Mínimo ancho */
+    box-sizing: border-box; /* Asegura que padding no rompa el diseño */
+}
+
+.form-container button {
+    background-color: var(--primary-color); /* Botón principal */
+    color: var(--panel-background); /* Texto blanco */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: var(--primary-dark); /* Color oscuro al pasar */
+}
+
+/* ::::::::: Panel de Detalles ::::::::: */
+.details-panel {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    max-width: 1000px; /* Máximo ancho */
+    margin: 0 auto; /* Centrado automático */
+    background-color: var(--panel-background); /* Fondo del panel */
+    border: 1px solid var(--divider-color); /* Línea divisora */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* ::::::::: Sección de Detalles ::::::::: */
+.details-section {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--divider-color); /* Línea divisora */
+}
+
+.details-section h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary-color); /* Azul principal */
+}
+
+.details-section p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: var(--secondary-color); /* Gris oscuro */
+}
+
+/* ::::::::: Tabla de Datos ::::::::: */
+.table-container {
+    margin-top: 20px;
+    overflow-x: auto; /* Habilita desplazamiento horizontal en tablas grandes */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+table th,
+table td {
+    border: 1px solid var(--divider-color); /* Línea divisora */
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: var(--primary-color); /* Fondo azul */
+    color: var(--panel-background); /* Texto blanco */
+    font-weight: bold;
+}
+
+table td {
+    color: var(--secondary-color); /* Gris oscuro */
+}
+
+/* ::::::::: Media Queries ::::::::: */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column; /* Ajusta el formulario a una columna en pantallas pequeñas */
+        gap: 10px;
+    }
+
+    .form-container input,
+    .form-container button {
+        width: 100%; /* Los elementos ocupan todo el ancho disponible */
+    }
+
+    .details-panel {
+        padding: 15px;
+    }
+}

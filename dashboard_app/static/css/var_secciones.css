@@ -1,0 +1,41 @@
+/* variables.css PARA EL DISEÑO DE LAS SECCIONES */
+:root {
+    /* Colores base */
+    --primary-color: #007bff; /* Azul principal */
+    --primary-dark: #0056b3; /* Azul oscuro */
+    --primary-light: #66b2ff; /* Azul claro */
+    
+    --secondary-color: #333; /* Gris oscuro */
+    --secondary-light: #666; /* Gris intermedio */
+    --secondary-lighter: #999; /* Gris claro */
+    
+    --background-color: #e0e4ec; /* Fondo homogéneo */
+    --panel-background: #ffffff; /* Fondo de panel */
+    --input-border: #ccc; /* Bordes de input */
+    --divider-color: #e5e5e5; /* Línea divisora */
+    
+    /* Variantes extendidas */
+    --primary-lighter: #cce7ff; /* Azul muy claro */
+    --secondary-darker: #1a1a1a; /* Gris más oscuro */
+    --background-darker: #dce3eb; /* Fondo más oscuro */
+    --background-lighter: #ffffff; /* Fondo más claro */
+    --highlight-color: #ffcc00; /* Amarillo destacado */
+
+     /* Degradados basados en colores primarios */
+  --gradient-primary-light-dark: linear-gradient(45deg, var(--primary-light), var(--primary-dark));
+  --gradient-primary-main-light: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+  --gradient-primary-dark-secondary: linear-gradient(45deg, var(--primary-dark), var(--secondary-color));
+
+  /* Degradados basados en colores secundarios */
+  --gradient-secondary-dark-light: linear-gradient(90deg, var(--secondary-color), var(--secondary-light));
+  --gradient-secondary-light-lighter: linear-gradient(90deg, var(--secondary-light), var(--secondary-lighter));
+  --gradient-secondary-dark-primary: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+
+  /* Degradados complementarios */
+  --gradient-complementary-primary-secondary: linear-gradient(120deg, var(--primary-color), var(--secondary-light));
+  --gradient-complementary-light-dark: linear-gradient(120deg, var(--primary-light), var(--secondary-dark));
+  --gradient-complementary-dark-light: linear-gradient(120deg, var(--primary-dark), var(--secondary-lighter));
+
+  /* Variación de degradado sutil */
+  --gradient-soft-muted: linear-gradient(135deg, var(--primary-light) 30%, var(--secondary-lighter) 70%);
+  }

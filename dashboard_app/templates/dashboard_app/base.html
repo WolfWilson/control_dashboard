@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Dashboard{% endblock %}</title>
+
+    <!-- Estilos principales -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/var_secciones.css' %}">
+
+    <!-- Google Fonts + Material Symbols -->
+<!-- Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+
+    <!-- Extra CSS específico de cada página -->
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- Barra superior ------------------------------------------------------->
+<header class="top-bar">
+    <button id="menu_bar" class="menu-icon">
+        <span class="material-symbols-outlined">menu</span>
+    </button>
+    <div class="right-icons">
+       <!-- ICONO DE LOGEO------------------------------------------------------->
+{% if not request.user.is_authenticated %}
+<a href="{% url 'login' %}" class="login-link" title="Iniciar sesión">
+    <span class="material-symbols-outlined">login</span>
+</a>
+{% endif %}
+
+        <div class="theme-toggler">
+            <span class="material-symbols-outlined active">light_mode</span>
+            <span class="material-symbols-outlined">dark_mode</span>
+        </div>
+
+        <div class="profile">
+            <div class="info">
+                {% if request.user.is_authenticated %}
+                    <p><b>{{ request.user.username }}</b></p>
+                    <p>{{ request.user.get_full_name|default:"Admin" }}</p>
+                {% else %}
+                    <p><b>Invitado</b></p>
+                {% endif %}
+            </div>
+            <div class="profile-photo">
+                <img src="{% static 'img/user-male-circle-blue-512.webp' %}" alt="Perfil">
+            </div>
+            <!--FORMULARIO INVISIBLE PARA EL LOGOUT -->
+      {% if request.user.is_authenticated %}
+<form id="logout-form" action="{% url 'logout' %}" method="post" style="display:inline">
+    {% csrf_token %}
+    <button type="submit" class="sidebar-link logout" title="Salir">
+        <span class="material-symbols-outlined">logout</span>
+        <h3>Salir</h3>
+    </button>
+</form>
+{% endif %}
+        </div>
+    </div>
+</header>
+
+<!-- Contenedor principal -------------------------------------------------->
+<div class="container" id="main-container">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="top">
+            <div class="logo">
+                <h2 class="logo-text">C</h2><span class="danger full-text">ONTROL</span>
+
+            </div>
+            
+        </div>
+
+        <nav class="sidebar">
+            <a href="{% url 'dashboard_app:dashboard' %}"
+               class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                <span class="material-symbols-outlined">grid_view</span>
+                <h3>Dashboard</h3>
+            </a>
+
+            <a href="{% url 'dashboard_app:usuario' %}"
+               class="{% if request.resolver_match.url_name == 'usuario' %}active{% endif %}">
+                <span class="material-symbols-outlined">person_outline</span>
+                <h3>Usuario</h3>
+            </a>
+
+             <a href="{% url 'dashboard_app:expediente' %}"
+               class="{% if request.resolver_match.url_name == 'expediente' %}active{% endif %}">
+                <span class="material-symbols-outlined">description</span>
+                <h3>Expediente</h3>
+            </a>
+
+            <a href="{% url 'dashboard_app:informes' %}"
+               class="{% if request.resolver_match.url_name == 'informes' %}active{% endif %}">
+                <span class="material-symbols-outlined">receipt_long</span>
+                <h3>Informes</h3>
+            </a>
+
+            <a href="{% url 'dashboard_app:graficos' %}"
+               class="{% if request.resolver_match.url_name == 'graficos' %}active{% endif %}">
+                <span class="material-symbols-outlined">bar_chart</span>
+                <h3>Gráficos</h3>
+            </a>
+
+            <a href="{% url 'dashboard_app:correo' %}"
+               class="{% if request.resolver_match.url_name == 'correo' %}active{% endif %}">
+                <span class="material-symbols-outlined">mail_outline</span>
+                <h3>Correo</h3><span class="msg_count">IA</span>
+            </a>
+
+            <a href="{% url 'dashboard_app:configuracion' %}"
+               class="{% if request.resolver_match.url_name == 'configuracion' %}active{% endif %}">
+                <span class="material-symbols-outlined">settings</span>
+                <h3>Configuración</h3>
+            </a>
+<!---->
+
+      </nav>
+    </aside>
+
+    <!-- Área de contenido principal -------------------------------------->
+    <main id="main-content">
+        {% if messages %}
+            {% for m in messages %}
+                <div class="msg {{ m.tags }}">{{ m }}</div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+</div>
+
+<!-- Librerías JS comunes -------------------------------------------------->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+<!-- JS principal de tu app -->
+<script src="{% static 'js/main.js' %}"></script>
+
+<!-- Bloque para scripts adicionales -->
+{% block extra_js %}{% endblock %}
+</body>
+</html>

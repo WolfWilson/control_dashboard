@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=PT+Sans+Narrow:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* ::::::::::::::::::::::::  Variables  :::::::::::::::::::::::::::*/
+:root {
+    --clr-primary: #7380ec;
+    --clr-danger: #ff7782;
+    --clr-success: #41f1b6;
+    --clr-white: #fff;
+    --clr-info-dark: #7d8da1;
+    --clr-info-light: #dce1eb;
+    --clr-dark: #363949;
+    --clr-warning: #ff4edc;
+    --clr-light: rgba(132, 139, 200, 0.18);
+    --clr-primary-variant: #111e88;
+    --clr-dark-variant: #677483;
+    --clr-color-background: #f6f6f9;
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+    --box-shadow: 0 2rem 3rem var(--clr-light);
+}
+
+/* Dark Theme */
+.dark-theme-variables {
+    --clr-color-background: #181a1e;
+    --clr-white: #202528;
+    --clr-light: rgba(0, 0, 0, 0.4);
+    --clr-dark: #edeffd;
+    --clr-dark-variant: #677483;
+    --box-shadow: 0 2rem 3rem var(--clr-light);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 0;
+    list-style: none;
+    appearance: none;
+}
+/*:::::::::::::AJUSTES GLOBALES ::::::::::::::::::*/
+
+main {
+    background-color: var(--clr-info-light); /* Fondo blanco para el marco principal */
+    border-radius: var(--border-radius-1); /* Bordes redondeados */
+    box-shadow: var(--box-shadow); /* Sombra para darle profundidad */
+    padding: var(--card-padding); /* Espacio interno para el contenido */
+    margin: 2rem 0; /* Espacio exterior */
+    height: calc(100vh - 4rem); /* Ajusta la altura del marco principal */
+    overflow-y: auto; /* Desplazamiento interno si el contenido excede la altura */
+}
+
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+    background: var(--clr-color-background);
+    background-color: #dfe1ee;
+}
+
+.container {
+    display: grid;
+    width: 96%;
+    grid-template-columns: 14rem auto 14rem;
+    gap: 1.8rem;
+    margin: 0 auto;
+}
+
+a {
+    color: var(--clr-dark);
+}
+
+h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 0.87rem;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+small {
+    font-size: 0.75rem;
+}
+
+.profile-photo img {
+    width: 2.8rem;
+    height: 2.8rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.text-muted {
+    color: var(--clr-info-dark);
+}
+
+p {
+    color: var(--clr-dark-variant);
+}
+
+b {
+    color: var(--clr-dark);
+}
+
+.primary {
+    color: var(--clr-primary);
+}
+
+.success {
+    color: var(--clr-success);
+}
+
+.danger {
+    color: var(--clr-danger);
+}
+
+.warning {
+    color: var(--clr-danger);
+}
+
+/* ::::::::::::::::: ASIDE :::::::::::::::::::: */
+aside {
+    width: 6rem; /* Ancho reducido para mostrar solo iconos */
+    transition: width 0.3s ease; /* Transición suave al expandirse */
+    background-color: #94e6e6;
+    height:1024px;
+    
+}
+
+
+aside .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.4rem;
+}
+
+aside .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+aside .logo h2 {
+    font-size: 1.5rem;
+    color: var(--clr-primary);
+}
+
+aside .logo .full-text {
+    display: none; /* Ocultar texto completo "ONTROL" */
+}
+
+aside.expanded .logo .full-text {
+    display: inline; /* Mostrar "ONTROL" al expandir */
+    color: var(--clr-danger);
+    font-weight: 800;
+}
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar iconos en estado reducido */
+    height: 85vh;
+    padding-top: 2rem;
+}
+
+aside .sidebar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-info-dark);
+    height: 3.2rem;
+    width: 100%;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a h3 {
+    display: none; /* Ocultar nombres en modo reducido */
+}
+
+aside.expanded .sidebar a {
+    justify-content: flex-start; /* Alinear texto al expandir */
+    padding-left: 1rem;
+}
+
+aside.expanded .sidebar a h3 {
+    display: inline; /* Mostrar nombres al expandir */
+    width: 200px;
+}
+
+.sidebar a span {
+    font-size: 1.8rem;
+}
+
+.sidebar a.active {
+    background-color: var(--clr-light);
+    color: var(--clr-primary);
+    position: relative;
+   
+}
+
+
+
+.sidebar a.active::before {
+    content: ''; /* Barra de estado activo a la izquierda */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--clr-primary);
+    border-radius: 0 var(--border-radius-1) var(--border-radius-1) 0;
+}
+
+/* Efecto hover: mover ligeramente el ícono hacia la derecha */
+.sidebar a:hover {
+    color: var(--clr-primary);
+   
+    transform: translateX(5px); /* Mover hacia la derecha al hacer hover */
+}
+
+
+
+/* Mostrar completo cuando está expandido */
+aside.expanded {
+    width: 14rem;
+}
+
+/* Hover y efectos */
+aside .sidebar a:hover {
+    color: var(--clr-primary);
+    color: #ffffff;
+}
+
+aside.expanded .sidebar a {
+    justify-content: flex-start; /* Alinear iconos y textos cuando está expandido */
+    padding-left: 1rem;
+}
+
+aside .sidebar a:hover span {
+    margin-left: 0;
+}
+
+aside .sidebar a span.msg_count {
+    background: var(--clr-danger);
+    color: var(--clr-white);
+    padding: 2px 6px;
+    font-size: 11px;
+    border-radius: var(--border-radius-1);
+}
+
+
+/* Right Sidebar and Profile */
+.right {
+    margin-top: 1.2rem;
+}
+
+.right h2 {
+    color: var(--clr-dark);
+}
+
+.right .top {
+    display: flex;
+    justify-content: start;
+    gap: 2rem;
+    background-color: var(--clr-color-background);
+}
+
+.right .top #menu_bar {
+    cursor: pointer; /* Cambia el cursor al estilo de puntero */
+    display: inline-flex; /* Asegura que el contenido esté alineado */
+    align-items: center; /* Centra el icono verticalmente */
+    border: none; /* Elimina bordes, si los hay */
+    background: var(--clr-color-background); /* Elimina el color de fondo 
+    padding: 0.5rem; /* Añade espacio alrededor del botón */
+}
+
+.right .theme-toggler {
+    background-color: var(--clr-white);
+    display: flex;
+    justify-content: space-between;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+    gap: 0.55rem;
+}
+
+.right .theme-toggler span {
+    background-color: var(--clr-white);
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right .theme-toggler span.active {
+    background-color: var(--clr-primary);
+    color: #fff;
+    border-radius: 15px;
+}
+
+/*:::::SECCIONES DEL MAIN*/
+
+/* Estilo base para las secciones de contenido */
+.content-section {
+    display: none; /* Ocultar todas las secciones por defecto */
+}
+
+/* Mostrar solo la sección activa */
+.content-section.active {
+    display: block;
+}
+
+/* Estilo para el título dentro del main */
+.content-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2rem;
+    color: #363949; /* Puedes personalizar el color */
+}
+
+
+/* Media query para reducir aún más el menú en dispositivos móviles */
+@media (max-width: 768px) {
+    aside {
+        width: 3rem;
+    }
+
+    aside.expanded {
+        width: 12rem;
+    }
+}

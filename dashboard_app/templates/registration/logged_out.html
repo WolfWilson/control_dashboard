@@ -1,0 +1,8 @@
+{% extends "dashboard_app/base.html" %}
+{% block title %}Sesión cerrada{% endblock %}
+{% block content %}
+  <h2 style="text-align:center;margin-top:2rem">Has salido correctamente.</h2>
+  <p style="text-align:center">
+      <a href="{% url 'login' %}">Iniciar sesión de nuevo</a>
+  </p>
+{% endblock %}
