@@ -131,7 +131,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY', default='clave_insegura_para_dev')
+
 DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = []  # o leé de ENV si querés
 
