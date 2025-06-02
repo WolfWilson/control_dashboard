@@ -1,17 +1,90 @@
 {% extends "base_auth.html" %}
 {% load static %}
 
-{% block title %}Iniciar sesión{% endblock %}
+{% block title %}Acceso INSSSEP Jubilaciones{% endblock %}
+
+{% block page_specific_css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <style>
+        /* Estilo para el viewport height, adaptado del original */
+        /* Puedes mover esto a login_style.css si prefieres */
+        .main-login-container { /* Renombrado de .main para evitar conflictos si .main es muy genérico */
+            height: calc(var(--vh, 1vh) * 100);
+            /* Otros estilos que tuviera .main en login_style.css podrían ir aquí o en el archivo */
+            display: flex; /* Para centrar el contenido si .login es el único hijo */
+            justify-content: center;
+            align-items: center;
+            /* Asegúrate que el fondo y otros estilos de .main estén en login_style.css aplicados a .main-login-container o body#login-page */
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
-<div class="login-card">
-    <span class="material-symbols-outlined login-icon">login</span>
-    <h2>Acceso al Dashboard</h2>
+<div class="main-login-container"> {# Usamos una clase más específica para el contenedor principal de esta página #}
+    <div class="login"> {# Esta clase viene de tu nuevo diseño HTML #}
+        <h1 class="heading">INSSSEP Jubilaciones</h1>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Entrar</button>
-    </form>
+        {# Mostrar errores generales del formulario (ej. "Usuario o contraseña incorrectos") #}
+        {% if form.non_field_errors %}
+            <div class="form-errors">
+                {% for error in form.non_field_errors %}
+                    <p class="error-message">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}"> {# Asegúrate que 'login' sea el nombre de tu URL de login #}
+            {% csrf_token %}
+
+            <div class="input">
+                {# <label for="{{ form.username.id_for_label }}">Usuario</label> #}
+                {# Django usualmente genera su propio label si usas {{ form.username.label_tag }} #}
+                {# Para mantener tu estructura exacta de label + input: #}
+                <label for="{{ form.username.id_for_label }}">Usuario</label>
+                {{ form.username }} {# Esto renderizará <input type="text" name="username" id="id_username" ... > #}
+                {# Para añadir atributos como autocomplete="off" al widget del formulario, tendrías que hacerlo en la definición del Form en forms.py #}
+                {# Ejemplo en forms.py: self.fields['username'].widget.attrs.update({'autocomplete': 'off'}) #}
+
+                {% if form.username.errors %}
+                    <div class="field-errors">
+                        {% for error in form.username.errors %}
+                            <p class="error-message">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="input">
+                <label for="{{ form.password.id_for_label }}">Contraseña</label>
+                {{ form.password }} {# Esto renderizará <input type="password" name="password" id="id_password" ... > #}
+                {# Mismo caso para autocomplete="off" #}
+
+                {% if form.password.errors %}
+                    <div class="field-errors">
+                        {% for error in form.password.errors %}
+                            <p class="error-message">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="login-btn">Ingresar</button>
+        </form>
+    </div>
+
+    <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo-fondo">
+    {# Asegúrate que la clase 'logo-fondo' y su CSS estén definidos en login_style.css #}
 </div>
+{% endblock %}
+
+{% block page_specific_js %}
+<script>
+    // Script para ajustar la altura del viewport
+    function setViewportHeight() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setViewportHeight(); // Ejecutar al cargar
+    window.addEventListener('resize', setViewportHeight); // Ejecutar al cambiar tamaño de ventana
+</script>
 {% endblock %}

@@ -23,6 +23,15 @@ AUTH_LDAP_CONNECTION_OPTIONS = {
     ldap.OPT_PROTOCOL_VERSION: 3,     # type: ignore[attr-defined]
 }
 
+from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
+#Añade búsqueda y tipo de grupo
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
+    "OU=Grupos,DC=insssep,DC=gov,DC=ar", 
+    ldap.SCOPE_SUBTREE,  # type: ignore[attr-defined]
+    "(objectClass=group)"
+)
+AUTH_LDAP_GROUP_TYPE = GroupOfNamesType()   # estándar AD (member=DN)
+
 
 # Si pruebas LDAPS con cert autofirmado (solo testing):
 # ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)

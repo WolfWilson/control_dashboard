@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Acceso{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <!-- Poppins + Material Symbols opcionales -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}"> {% block page_specific_css %}{% endblock %} <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <body id="login-page">
     {% block content %}{% endblock %}
-</body>
+    {% block page_specific_js %}{% endblock %} </body>
 </html>
