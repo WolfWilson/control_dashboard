@@ -1,3 +1,5 @@
+/*dashboard_app/static/css/login.css*/
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
  
 
@@ -28,6 +30,16 @@
                 background-position: center;
 				background-repeat: no-repeat;
 			}
+
+			.main-login-container {
+				background-image: url("../img/lobo.jpeg");
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+
+
 			.login {
 				position: relative;
 				background: rgba(104, 109, 111, 0.2); /* R, G, B, opacidad 0.2 = 20% */
