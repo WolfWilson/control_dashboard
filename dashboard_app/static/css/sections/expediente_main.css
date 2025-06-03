@@ -1,0 +1,110 @@
+/* ====================  Expedientes – Hoja específica  ==================== */
+@import url('var_secciones.css');
+
+/* ————— RESET LOCAL ————— */
+#expediente-page,
+#expediente-page * {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.hidden { display: none !important; }
+
+/* ————— CONTENEDOR PRINCIPAL ————— */
+#expediente-page {
+    max-width: 960px;
+    margin: 3rem auto;               /* +espacio exterior */
+    padding: 2rem 2.5rem;            /* +espacio interior */
+    background: var(--panel-background, #fff);
+    border: 1px solid var(--divider-color, #dedede);
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgb(0 0 0 / 6%);  /* sombra sutil */
+}
+
+/* ————— TÍTULO ————— */
+#expediente-page h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color, #007bff);
+    margin-bottom: 2rem;
+}
+
+/* ————— FORMULARIO ————— */
+#expediente-page form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 1.5rem;              /* fila x columna */
+    justify-content: center;         /* centra los inputs */
+    margin-bottom: 2rem;
+}
+
+#expediente-page label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--secondary-color, #333);
+    min-width: 140px;
+}
+
+#expediente-page input {
+    padding: 0.45rem 0.65rem;
+    border: 1px solid var(--input-border, #ccc);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+#expediente-page button {
+    align-self: flex-end;            /* alineado con inputs */
+    padding: 0.6rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    background: var(--primary-color, #007bff);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.15s;
+}
+#expediente-page button:hover   { background: var(--primary-dark, #0056b3); }
+#expediente-page button:active  { transform: scale(0.97); }
+
+/* ————— DETALLES ————— */
+#details {
+    border-top: 1px solid var(--divider-color, #eee);
+    padding-top: 1.5rem;
+}
+
+#details h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--secondary-color, #333);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.8rem 1.4rem;
+}
+
+.label {
+    font-weight: 600;
+    color: var(--secondary-color, #333);
+}
+
+#details span:not(.label) { color: var(--secondary-light, #555); }
+
+/* ————— RESPONSIVE (≤ 600 px) ————— */
+@media (max-width: 600px) {
+    #expediente-page {
+        padding: 1.5rem 1.2rem;
+    }
+    #expediente-page h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    #expediente-page button {
+        width: 100%;
+    }
+}
