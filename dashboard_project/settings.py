@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-SECRET_KEY = config('SECRET_KEY')          # ← importación desde .env
+SECRET_KEY = config('SECRET_KEY') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -150,7 +150,8 @@ USE_TZ = True
 
 STATICFILES_DIRS = [ BASE_DIR / 'dashboard_app' / 'static' ]
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'   #  ← barra inicial y final
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

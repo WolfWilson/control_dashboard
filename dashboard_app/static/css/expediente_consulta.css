@@ -1,168 +1,140 @@
-/* Importar las variables correctamente */
-@import url('./var_secciones.css'); /* Ajusta la ruta si está en otra carpeta */
+/* ===== Variables globales ===== */
+@import url('var_secciones.css');
 
-/* ::::::::: Contenedor General ::::::::: */
-.content-section {
+/* ===== Reset mínimo ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Utilidades ===== */
+.hidden  { display: none !important; }
+.loading { text-align: center; margin: 1rem 0; }
+
+/* =================================================================
+   Sección: Expedientes  (prefijo #page-expedientes)
+   ================================================================= */
+
+/* ===== Contenedor principal ===== */
+#page-expedientes .content-section {
+    --gap: 20px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Asegura que los elementos no ocupen más espacio del necesario */
-    background-color: var(--panel-background); /* Fondo del panel */
-    padding: 20px;
-    margin: 20px auto;
+    gap: var(--gap);
+
+    width: min(90%, 1200px);
+    margin-inline: auto;
+    padding: var(--gap);
+
+    background: var(--panel-background);
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 1200px;
-    height: auto; /* Altura adaptativa */
-    max-height: calc(100vh - 40px); /* Limita la altura al 100% menos márgenes */
-    overflow-y: auto; /* Barra de desplazamiento vertical solo si es necesario */
-    overflow-x: hidden; /* Oculta barras horizontales */
-    transition: all 0.3s ease;
-    position: relative; /* Asegura que no interfiera con otros elementos */
-    z-index: 1; /* Nivel bajo para evitar conflictos visuales */
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    overflow-y: auto;
 }
 
-/* ::::::::: Encabezado ::::::::: */
-.header {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--secondary-color); /* Gris oscuro */
-}
-.highlight {
-    font-weight: bold; /* Negrita solo para labels */
-    color: var(--secondary-color); /* Color para diferenciarlo, opcional */
-    font-size: 14px; /* Asegúrate de un tamaño consistente */
+/* ===== Títulos ===== */
+#page-expedientes .content-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
 }
 
+/* ===== Formulario ===== */
+#page-expedientes .form-container {
+    --field-gap: 10px;
 
-/* ::::::::: Formulario ::::::::: */
-.form-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Espacio uniforme entre elementos */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten */
-    gap: 10px;
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid var(--divider-color); /* Línea divisora */
-    border-radius: 8px;
-    background-color: var(--panel-background); /* Fondo claro */
-    width: 100%; /* Ocupa todo el ancho disponible */
-}
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--field-gap);
 
-.form-container label {
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--secondary-color); /* Gris oscuro */
-    margin-right: 5px; /* Espaciado entre label e input */
-}
-
-.form-container input[type="text"] {
-    padding: 8px 10px;
-    border: 1px solid var(--input-border); /* Borde de input */
-    border-radius: 4px;
-    font-size: 14px;
-    width: calc(20% - 10px); /* Ocupa el 20% del ancho disponible */
-    min-width: 120px; /* Mínimo ancho */
-    box-sizing: border-box; /* Asegura que padding no rompa el diseño */
-}
-
-.form-container button {
-    background-color: var(--primary-color); /* Botón principal */
-    color: var(--panel-background); /* Texto blanco */
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.form-container button:hover {
-    background-color: var(--primary-dark); /* Color oscuro al pasar */
-}
-
-/* ::::::::: Panel de Detalles ::::::::: */
-.details-panel {
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    max-width: 1000px; /* Máximo ancho */
-    margin: 0 auto; /* Centrado automático */
-    background-color: var(--panel-background); /* Fondo del panel */
-    border: 1px solid var(--divider-color); /* Línea divisora */
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-}
-
-/* ::::::::: Sección de Detalles ::::::::: */
-.details-section {
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--divider-color); /* Línea divisora */
-}
-
-.details-section h3 {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: var(--primary-color); /* Azul principal */
-}
-
-.details-section p {
-    font-size: 14px;
-    margin: 5px 0;
-    color: var(--secondary-color); /* Gris oscuro */
-}
-
-/* ::::::::: Tabla de Datos ::::::::: */
-.table-container {
-    margin-top: 20px;
-    overflow-x: auto; /* Habilita desplazamiento horizontal en tablas grandes */
-}
-
-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 14px;
+    padding: 1rem;
+    border: 1px solid var(--divider-color);
+    border-radius: 8px;
+    background-color: var(--background-lighter);
 }
 
-table th,
-table td {
-    border: 1px solid var(--divider-color); /* Línea divisora */
-    padding: 12px;
-    text-align: left;
+#page-expedientes .form-container label {
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-right: 4px;
 }
 
-table th {
-    background-color: var(--primary-color); /* Fondo azul */
-    color: var(--panel-background); /* Texto blanco */
-    font-weight: bold;
+#page-expedientes .form-container input {
+    padding: 8px 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 6rem;         /* ancho base */
+    flex: 1 0 120px;     /* crece hasta llenar fila */
 }
 
-table td {
-    color: var(--secondary-color); /* Gris oscuro */
+#page-expedientes .btn-primary {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    transition: background-color .25s;
+}
+#page-expedientes .btn-primary:hover {
+    background: var(--primary-dark);
 }
 
-/* ::::::::: Media Queries ::::::::: */
+/* ===== Panel de detalles ===== */
+#page-expedientes .details-panel {
+    width: 100%;
+    padding: 1.5rem;
+    border: 1px solid var(--divider-color);
+    border-radius: 8px;
+    background-color: var(--background-lighter);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+}
+
+#page-expedientes .details-section + .details-section { /* separador */
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--divider-color);
+}
+
+#page-expedientes .details-section h2 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: .5rem;
+}
+
+#page-expedientes .label {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+#page-expedientes .extracto-text {
+    display: inline-block;
+    max-width: 100%;
+    white-space: pre-wrap;
+    word-break: break-word; /* evita desbordes */
+}
+
+#page-expedientes span.no-data {
+    color: red;
+    font-style: italic;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-    .form-container {
-        flex-direction: column; /* Ajusta el formulario a una columna en pantallas pequeñas */
-        gap: 10px;
+    #page-expedientes .form-container {
+        flex-direction: column;
     }
-
-    .form-container input,
-    .form-container button {
-        width: 100%; /* Los elementos ocupan todo el ancho disponible */
-    }
-
-    .details-panel {
-        padding: 15px;
+    #page-expedientes .btn-primary,
+    #page-expedientes .form-container input {
+        width: 100%;
     }
 }

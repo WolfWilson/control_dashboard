@@ -1,0 +1,49 @@
+{% extends 'dashboard_app/base.html' %}
+{% load static %}
+
+{% block title %}Consulta de Expedientes{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/expediente.css' %}">
+<style>  /* ← ajuste local para quitar scroll interno */
+  /* solo en esta vista */
+  #main-content { overflow-y: visible; }
+</style>
+{% endblock %}
+
+{% block content %}
+<main id="expediente-page">
+  <h1>Consulta de Expedientes</h1>
+
+  <form id="expediente-form">
+    <label>Letra:      <input id="letra"      type="text"   maxlength="1" required></label>
+    <label>Actuación:  <input id="actuacion"  type="number" min="1"  required></label>
+    <label>Ejercicio:  <input id="ejercicio"  type="number" min="1900" max="2100" required></label>
+    <button type="submit">Buscar</button>
+  </form>
+
+  <p id="loading" class="hidden">Buscando…</p>
+
+  <section id="details">
+    <h2>Datos del Expediente</h2>
+
+    <div class="detail-grid">
+      <p><span class="label">Expediente:</span>     <span id="expediente-info">-</span></p>
+      <p><span class="label">Fecha de Alta:</span>  <span id="fecha-alta">-</span></p>
+      <p><span class="label">Extracto:</span>       <span id="extracto">-</span></p>
+
+      <p><span class="label">DNI:</span>            <span id="dni">-</span></p>
+      <p><span class="label">Apellido y Nombre:</span>
+         <span id="nombre">-</span></p>
+      <p><span class="label">N.º Afiliado:</span>   <span id="nro-afiliado">-</span></p>
+
+      <p><span class="label">Área:</span>           <span id="area">-</span></p>
+      <p><span class="label">Estado:</span>         <span id="estado">-</span></p>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/expediente.js' %}"></script>
+{% endblock %}

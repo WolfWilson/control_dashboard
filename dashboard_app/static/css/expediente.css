@@ -1,0 +1,51 @@
+@import url('var_secciones.css');
+#expediente-page, #expediente-page * { box-sizing: border-box; }
+.hidden { display: none !important; }
+
+/* contenedor */
+#expediente-page {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* formulario */
+#expediente-page form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+#expediente-page label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: .9rem;
+}
+#expediente-page input {
+    padding: .4rem .6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#expediente-page button {
+    padding: .6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+#expediente-page button:hover { background: #0056b3; }
+
+/* detalles */
+#details { border-top: 1px solid #eee; padding-top: 1rem; }
+.detail-grid {
+    display: grid;            /* 2 columnas en desktop */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: .6rem 1.2rem;
+}
+.label { font-weight: 600; color: #333; }
