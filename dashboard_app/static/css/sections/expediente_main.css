@@ -95,6 +95,89 @@
 
 #details span:not(.label) { color: var(--secondary-light, #555); }
 
+
+/* tarjeta rutas */
+#routes          { margin-top: 2rem; }
+#routes h2       { text-align: center; margin-bottom: 1rem; }
+
+.routes-table    { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.routes-table th { background: var(--clr-primary);  color:#fff; padding:.4rem; }
+.routes-table td { border:1px solid #ddd; padding:.3rem .4rem; }
+
+.btn-secondary {
+  margin: .8rem auto 0;
+  display:block;
+  padding:.5rem 1rem;
+  border:none;
+  border-radius:4px;
+  background: var(--clr-info-dark);
+  color:#fff;
+  cursor:pointer;
+}
+.btn-secondary:hover { background: var(--clr-dark-variant); }
+
+.hidden { display:none!important; }
+
+
+.routes-actions{
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  margin-top:.8rem;
+}
+
+.btn-secondary{
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.45rem 1.1rem;
+  border:none;
+  border-radius:4px;
+  background:var(--clr-primary);
+  color:#fff;
+  cursor:pointer;
+  transition:background .2s;
+}
+.btn-secondary:hover{ background:var(--clr-primary-variant); }
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: normal;
+
+  /* ① estándar (para Firefox, Edge, etc.) */
+  font-feature-settings: 'liga';
+  /* ② prefijo para WebKit (Chrome, Safari) */
+  -webkit-font-feature-settings: 'liga';
+
+  /* ejes de variación de Material Symbols */
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+
+/* Mantén el resto del estilo del botón */
+.btn-secondary{
+  display:flex; align-items:center; gap:.4rem;
+  padding:.45rem 1.1rem;
+  border:none; border-radius:4px;
+  background:var(--clr-primary); color:#fff;
+  cursor:pointer; transition:background .2s;
+}
+.btn-secondary:hover{ background:var(--clr-primary-variant); }
+
+
+/* (opcional) Ocultar texto en móviles */
+@media(max-width:420px){
+  .btn-secondary .btn-text{ display:none; }
+}
+
+
+
 /* ————— RESPONSIVE (≤ 600 px) ————— */
 @media (max-width: 600px) {
     #expediente-page {

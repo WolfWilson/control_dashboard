@@ -1,25 +1,14 @@
-// Toggle sidebar UX
+// static/js/main.js
 document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('menu_bar');
-  const aside = document.querySelector('aside');
-  if (btn && aside) {
-    btn.addEventListener('click', () => aside.classList.toggle('expanded'));
-  }
-});
+  const btn  = document.getElementById('menu_bar');
+  const root = document.documentElement;           // <html>
 
-form.addEventListener('submit', () => toggleLoading(true));
-window.addEventListener('pageshow', () => toggleLoading(false));
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const btn   = document.getElementById('menu_bar');
-  const aside = document.getElementById('sidebar') || document.querySelector('aside');
-  const cont  = document.getElementById('main-container');
-
-  if (btn && aside && cont) {
-    btn.addEventListener('click', () => {
-      aside.classList.toggle('expanded');
-      cont.classList.toggle('expanded-main');
-    });
-  }
+  // Listener de toggle
+  btn?.addEventListener('click', () => {
+    root.classList.toggle('sidebar-expanded');
+    localStorage.setItem(
+      'sidebarExpanded',
+      root.classList.contains('sidebar-expanded')
+    );
+  });
 });

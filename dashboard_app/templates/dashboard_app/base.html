@@ -11,12 +11,23 @@
     <!-- Estilos principales -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/var_secciones.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sections/menu_aside.css' %}">
+
 
     <!-- Google Fonts + Material Symbols -->
 <!-- Poppins -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Material Symbols Outlined -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+
+
+<script>
+  /* Aplica la clase expanded antes de que se pinte la página */
+  (function () {
+    if (localStorage.getItem('sidebarExpanded') === 'true') {
+      document.documentElement.classList.add('sidebar-expanded');
+    }
+  })();
+</script>
 
 
     <!-- Extra CSS específico de cada página -->

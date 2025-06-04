@@ -1,377 +1,162 @@
-/* :::::::::::::::::::::::: Variables :::::::::::::::::::::::::::*/
+/* ======================= VARIABLES GLOBALES ======================= */
 :root {
-    --clr-primary: #7380ec;
-    --clr-danger: #ff7782;
-    --clr-success: #41f1b6;
-    --clr-white: #fff;
-    --clr-info-dark: #7d8da1;
-    --clr-info-light: #dce1eb;
-    --clr-dark: #363949;
-    --clr-warning: #ff4edc;
-    --clr-light: rgba(132, 139, 200, 0.18);
-    --clr-primary-variant: #111e88;
-    --clr-dark-variant: #677483;
-    --clr-color-background: #f6f6f9;
-    --card-border-radius: 2rem;
-    --border-radius-1: 0.4rem;
-    --border-radius-2: 0.8rem;
-    --border-radius-3: 1.2rem;
-    --card-padding: 1.8rem;
-    --padding-1: 1.2rem;
-    --box-shadow: 0 2rem 3rem var(--clr-light);
+  --clr-primary:          #7380ec;
+  --clr-danger:           #ff7782;
+  --clr-success:          #41f1b6;
+  --clr-white:            #fff;
+  --clr-info-dark:        #7d8da1;
+  --clr-info-light:       #dce1eb;
+  --clr-dark:             #363949;
+  --clr-warning:          #ff4edc;
+  --clr-light:            rgba(132, 139, 200, 0.18);
+  --clr-primary-variant:  #111e88;
+  --clr-dark-variant:     #677483;
+  --clr-color-background: #f6f6f9;
+
+  --card-border-radius: 2rem;
+  --border-radius-1:    0.4rem;
+  --border-radius-2:    0.8rem;
+  --border-radius-3:    1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1:    1.2rem;
+
+  --box-shadow: 0 2rem 3rem var(--clr-light);
 }
 
-/* ::::::::::::::::::::::::: Reset ::::::::::::::::::::::::: */
+/* ======================= RESET BÁSICO ======================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: 0;
-    list-style: none;
-    appearance: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 0;
+  list-style: none;
+  appearance: none;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    width: 100vw;
-    height: 100vh;
-    font-size: 0.88rem;
-    user-select: none;
-    overflow-x: hidden;
-    background: var(--clr-color-background);
-    background-color: #dfe1ee;
+  font-family: 'Poppins', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  font-size: 0.88rem;
+  user-select: none;
+  overflow-x: hidden;
+  background: var(--clr-color-background);
+  background-color: #dfe1ee;
 }
 
-a {
-    color: var(--clr-dark);
-}
+a { color: var(--clr-dark); }
 
-/* ::::::::::::::::: Header (barra superior) ::::::::::::::::: */
+/* ======================= BARRA SUPERIOR (HEADER) ======================= */
 .top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background-color: var(--clr-white);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: var(--clr-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+  z-index: 1000;
 }
 
 .menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-    background-color: var(--clr-white);
-    margin-left: 0.5rem;
+  font-size: 24px;
+  cursor: pointer;
+  background: var(--clr-white);
+  margin-left: 0.5rem;
 }
 
-/* Iconos a la derecha */
+/* Iconos lado derecho */
 .right-icons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-
-.right-icons .theme-toggler {
-    display: flex;
-    gap: 10px;
-}
-
+.right-icons .theme-toggler { display: flex; gap: 10px; }
 .theme-toggler .material-symbols-outlined {
-    font-size: 24px;
-    cursor: pointer;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-
 .profile-photo img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
-/* ::::::::::::::::: Sidebar ::::::::::::::::: */
-aside {
-    width: 6rem; /* Ancho por defecto de la barra lateral expandida */
-    transition: width 0.3s ease; /* Transición suave al expandirse */
-    background-color: var(--clr-color-background);
-    height: calc(100vh - 60px); /* Ajuste para la barra superior */
-    position: fixed;
-    top: 60px; /* Desplaza la barra lateral para no tapar la barra superior */
-    left: 0;
-    padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-    border-radius: var(--border-radius-1);
-}
-
-aside .top {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1.4rem;
-}
-
-aside .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-aside .logo h2 {
-    font-size: 1.5rem;
-    color: var(--clr-primary);
-}
-
-aside .logo .full-text {
-    display: none;
-}
-
-aside.expanded .logo .full-text {
-    display: inline;
-    color: var(--clr-danger);
-    font-weight: 800;
-}
-
-aside .sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 85vh;
-    padding-top: 2rem;
-}
-
-aside .sidebar a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--clr-info-dark);
-    height: 3.2rem;
-    width: 100%;
-    gap: 1rem;
-    transition: all 0.3s ease;
-}
-
-/* Ocultar los textos inicialmente */
-aside .sidebar a h3 {
-    opacity: 0;
-    transform: translateX(-10px); /* Desplazamiento inicial hacia la izquierda */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
-    position: absolute; /* Elimina el texto del flujo normal para no desordenar los iconos */
-    white-space: nowrap; /* Evita que el texto se parta en varias líneas */
-    visibility: hidden; /* Evita que el texto sea visible antes de tiempo */
-}
-
-/* Ajustes para el aside expandido */
-aside.expanded .sidebar a h3 {
-    position: relative; /* Retorna al flujo normal cuando está expandido */
-    opacity: 1; /* El texto se vuelve visible */
-    transform: translateX(0); /* Regresa a su posición original */
-    visibility: visible; /* Hace que el texto sea visible */
-    transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s; /* Pequeño retraso para sincronizar */
-}
-
-/* Mantener los íconos centrados incluso cuando la barra lateral está contraída */
-aside .sidebar a span {
-    font-size: 1.8rem;
-    position: relative; /* Mantiene los íconos en su lugar */
-    z-index: 1; /* Asegura que los íconos estén siempre visibles */
-    transition: transform 0.3s ease; /* Animación opcional para los íconos */
-}
-
-/* Evitar que los íconos se muevan al contraer la barra lateral */
-aside.expanded .sidebar a span {
-    transform: translateX(0); /* Los íconos no se mueven */
-}
-
-/* Transición para la barra lateral */
-aside {
-    transition: width 0.3s ease; /* Asegura una transición suave */
-}
-
-/* ::::::::::::::::::: Ajustes para el aside expandido :::::::::::::::::::: */
-aside.expanded {
-    width: 250px; /* Ancho cuando la barra lateral está expandida */
-    transition: width 0.3s ease; /* Sincronización con los textos */
-}
-
-
-.sidebar a.active {
-    background-color: var(--clr-light);
-    color: var(--clr-primary);
-    position: relative;
-}
-
-.sidebar a.active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 5px;
-    height: 100%;
-    background-color: var(--clr-primary);
-    border-radius: 0 var(--border-radius-1) var(--border-radius-1) 0;
-}
-
-.sidebar a:hover {
-    color: var(--clr-danger);
-    transform: translateX(5px);
-}
-
-/* Ajuste para el aside expandido */
-aside.expanded {
-    width: 250px; /* Ancho cuando el aside está expandido */
-}
-/* Ajuste dinámico para el main cuando el aside está expandido */
-.container.expanded-main main {
-    margin-left: 250px; /* Ajuste para el estado expandido del aside */
-    transition: margin-left 0.3s ease;
-}
-
-
-
-aside.expanded .sidebar a {
-    justify-content: flex-start;
-    padding-left: 1rem;
-}
-
-aside .sidebar a:hover span {
-    margin-left: 0;
-}
-
-aside .sidebar a span.msg_count {
-    background: var(--clr-danger);
-    color: var(--clr-white);
-    padding: 2px 6px;
-    font-size: 11px;
-    border-radius: var(--border-radius-1);
-}
-
-/* ::::::::::::::::: Submenú ::::::::::::::::: */
-.submenu {
-    display: none; /* Ocultar el submenú por defecto */
-    flex-direction: column;
-    margin-left: 0.5rem; /* Indentación para diferenciar */
-    padding: 0.5rem 0;
-    border-left: 3px solid var(--clr-primary); /* Línea indicativa */
-}
-
-.submenu-item {
-    color: var(--clr-dark);
-    font-size: 0.9rem;
-    padding: 0.2rem 0.8rem;
-    border-radius: var(--border-radius-1);
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.submenu-item:hover {
-    color: var(--clr-primary);
-    background-color: var(--clr-info-light);
-}
-
-/* Mostrar el submenú cuando está activo */
-.menu-item.active + .submenu {
-    display: flex; /* Mostrar el submenú */
-}
-
-/* ::::::::::::::::: Flecha Indicativa ::::::::::::::::: */
-.submenu-toggle {
-    margin-left: 0;
-    font-size: 1.5rem;
-    transform: rotate(0);
-    transition: transform 0.3s ease;
-}
-
-.menu-item.active .submenu-toggle {
-    transform: rotate(180deg); /* Girar la flecha cuando el submenú está abierto */
-}
-
-
-/* ::::::::::::::::: Área de Contenido Principal ::::::::::::::::: */
-
-/* Asegurar que el contenedor principal sea flexible */
-.container {
-    display: flex;
-    margin-top: 60px; /* Ajuste para la barra superior */
-    transition: all 0.3s ease;
-    margin-left: 0px; /* Ajusta el margen para el espacio de la barra lateral expandida */
-    width: calc(100% - 250px); /* Ajusta el ancho del contenedor */
-}
-
-/* Ajuste para el main por defecto */
-main {
-    margin-left: 250px; /* Ajusta el margen para el espacio de la barra lateral expandida */
-    width: calc(100% - 250px); /* Ajusta el ancho del contenido principal */
-    padding: 20px;
-    flex-grow: 1;
-    overflow-y: auto;
-    height: calc(100vh - 60px); /* Ajuste para la barra superior */
-    background-color: var(--clr-info-light);
-    transition: all 0.3s ease;
-}
-
-.content-title {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 2rem;
-    color: #363949;
-}
-
-/* ::::::::::::::::: Media Queries ::::::::::::::::: */
-@media (max-width: 768px) {
-    aside {
-        width: 3rem;
-    }
-
-    aside.expanded {
-        width: 12rem;
-    }
-
-    .content-section {
-        margin-left: 3rem; /* Ajuste para la barra lateral en móviles */
-    }
-}
-
-/* hereda el look de los <a.sidebar-link> */
-button.sidebar-link {
-    all: unset;               /* quita border, background, etc. */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 3.2rem;
-    gap: 1rem;
-    cursor: pointer;
-    color: var(--clr-info-dark);
-    transition: all 0.3s ease;
-}
-
-button.sidebar-link:hover {
-    color: var(--clr-danger);
-    transform: translateX(5px);
-}
-
-button.sidebar-link.logout span {
-    font-size: 1.8rem;
-}
-
-/* style.css – barra superior */
+/* ======================= LOGIN LINK EN TOP-BAR ======================= */
 .login-link {
-    display: flex;
-    align-items: center;
-    gap: .25rem;
-    font-size: 1rem;
-    color: var(--clr-dark);
-    margin-left: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  font-size: 1rem;
+  color: var(--clr-dark);
+  margin-left: .5rem;
 }
 .login-link:hover { color: var(--clr-primary); }
 
+/* ======================= CONTENIDO PRINCIPAL ======================= */
+main {
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
+  height: calc(100vh - 60px); /* 60 = altura .top-bar */
+  background: var(--clr-info-light);
+  transition: all .3s ease;
+}
+
+.content-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--clr-dark);
+}
+
+/* ======================= UTILIDADES ======================= */
+
+/* ======== Elimina scroll interno y alto fijo ======== */
+.container,
+#main-container,
+main {
+  height: auto !important;      /* deja crecer */
+  overflow: visible !important; /* que herede el scroll del <body> */
+}
+
+/* ---------- Avisos / mensajes ---------- */
+.msg {
+  padding: .75rem 1rem;
+  border-radius: var(--border-radius-1);
+  margin: 1rem;                 /* separa del borde */
+  position: fixed;
+  top: 70px;                    /* debajo de la top-bar */
+  left: var(--sidebar-collapsed);
+  z-index: 910;                 /* por encima del sidebar */
+  transition: left .3s ease;
+}
+
+.sidebar-expanded .msg { left: var(--sidebar-expanded); }
+
+.msg.success { background: var(--clr-success); color:#fff; }
+.msg.error   { background: var(--clr-danger);  color:#fff; }
+
+/* ==== Separación bajo la top-bar ==== */
+#main-container,
+main {
+    padding-top: 1.25rem;   /* ≈20 px – ajusta si quieres más/menos */
+}
+
+/* ======================= MEDIA QUERIES GLOBALES ======================= */
+@media (max-width: 768px) {
+  main { padding: 15px; }
+}

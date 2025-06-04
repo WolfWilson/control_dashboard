@@ -1,21 +1,23 @@
-#dashboard_app/urls.py
 from django.urls import path
-from django.views.generic import TemplateView
-from .views import DashboardHomeView, ExpedienteView, BlankView
+from .views import (
+    DashboardHomeView,
+    ExpedienteView,
+    BlankView,          # ← ya incluye LoginRequiredMixin
+)
 
 app_name = 'dashboard_app'
 
 urlpatterns = [
+    # Home (dashboard)
     path('', DashboardHomeView.as_view(), name='dashboard'),
-    path('expedientes/', TemplateView.as_view(
-         template_name='dashboard_app/expediente.html'), name='expedientes'),
-    # ----  Placeholders  ----
-    path('usuario/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='usuario'),
-    #path('expediente/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='expediente'),
-    path('informes/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='informes'),
-    path('graficos/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='graficos'),
-    path('correo/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='correo'),
-    path('configuracion/', TemplateView.as_view(template_name='dashboard_app/blank.html'), name='configuracion'),
-    #path('usuario/', BlankView.as_view(), name='usuario'),
 
+    # Vista real de expedientes (protegida)
+    path('expedientes/', ExpedienteView.as_view(), name='expedientes'),
+
+    # ----  Secciones aún en blanco (todas protegidas)  ----
+    path('usuario/',       BlankView.as_view(), name='usuario'),
+    path('informes/',      BlankView.as_view(), name='informes'),
+    path('graficos/',      BlankView.as_view(), name='graficos'),
+    path('correo/',        BlankView.as_view(), name='correo'),
+    path('configuracion/', BlankView.as_view(), name='configuracion'),
 ]

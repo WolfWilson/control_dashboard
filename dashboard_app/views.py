@@ -9,9 +9,9 @@ class DashboardHomeView(LoginRequiredMixin, TemplateView):
 
 
 class ExpedienteView(LoginRequiredMixin, FormView):
-    template_name = 'dashboard_app/expedientes.html'
-    form_class = ExpedienteForm
-    success_url = reverse_lazy('dashboard_app:expedientes')  # recargar la misma página
+    template_name = 'dashboard_app/expediente.html'   # ←  singular, el que ya tenías
+    form_class    = ExpedienteForm
+    success_url   = reverse_lazy('dashboard_app:expedientes')
 
     def form_valid(self, form):
         # TODO: ejecutar el SP y armar dict expte

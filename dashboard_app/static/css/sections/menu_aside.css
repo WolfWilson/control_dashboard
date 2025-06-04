@@ -1,0 +1,118 @@
+/* ========================================================================
+   MENU / ASIDE  – overlay, no afecta layout
+   ======================================================================== */
+@import url('../var_secciones.css');
+
+/* ----------  Variables de ancho ---------- */
+:root {
+  --sidebar-collapsed: 80px;
+  --sidebar-expanded: 250px;
+}
+
+/* ----------  Sidebar básico ---------- */
+#sidebar {
+  width: var(--sidebar-collapsed);
+  transition: width 0.3s ease;
+  background: var(--clr-color-background);
+  height: calc(100vh - 60px);          /* deja libre la top-bar */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgb(0 0 0 / .3);
+  border-radius: var(--border-radius-1);
+  z-index: 900;                        /* se superpone al contenido */
+}
+
+/* Estado expandido */
+.sidebar-expanded #sidebar { width: var(--sidebar-expanded); }
+
+/* ---------------- Logo ---------------- */
+aside .top      { display:flex; align-items:center; justify-content:center; margin-top:1.4rem; }
+aside .logo     { display:flex; align-items:center; justify-content:center; }
+aside .logo h2  { font-size:1.5rem; color:var(--clr-primary); }
+
+aside .logo .full-text { display:none; }
+.sidebar-expanded #sidebar .logo .full-text {
+  display:inline; color:var(--clr-danger); font-weight:800;
+}
+
+/* ---------------- Wrapper links ---------------- */
+aside .sidebar {
+  display:flex; flex-direction:column; align-items:center;
+  height:85vh; padding-top:2rem;
+}
+
+/* enlace base (íconos + texto opcional) */
+aside .sidebar a,
+button.sidebar-link {
+  display:flex; align-items:center; justify-content:center;
+  gap:1rem;
+  height:3.2rem; width:100%;
+  color:var(--clr-info-dark);
+  transition:color .3s, transform .3s;
+}
+
+/* activo y hover */
+aside .sidebar a.active,
+button.sidebar-link.logout {
+  background:var(--clr-light); color:var(--clr-primary);
+  position:relative;
+}
+.sidebar a.active::before{
+  content:''; position:absolute; left:0; top:0; width:5px; height:100%;
+  background:var(--clr-primary);
+  border-radius:0 var(--border-radius-1) var(--border-radius-1) 0;
+}
+aside .sidebar a:hover,
+button.sidebar-link:hover { color:var(--clr-danger); transform:translateX(5px); }
+
+/* ---------- Iconos y textos ---------- */
+aside .sidebar a span,
+button.sidebar-link span { font-size:1.8rem; transition:transform .3s; }
+
+aside .sidebar a h3 {
+  opacity:0; visibility:hidden; transform:translateX(-10px);
+  position:absolute; white-space:nowrap;
+  transition:opacity .3s, transform .3s;
+}
+
+.sidebar-expanded #sidebar .sidebar a {
+  justify-content:flex-start; padding-left:1rem;
+}
+.sidebar-expanded #sidebar .sidebar a h3 {
+  position:relative; opacity:1; visibility:visible; transform:none;
+  transition:opacity .3s .1s, transform .3s .1s;
+}
+
+/* ---------- Badge ---------- */
+aside .sidebar a span.msg_count{
+  background:var(--clr-danger); color:#fff;
+  padding:2px 6px; font-size:11px; border-radius:var(--border-radius-1);
+}
+
+/* ---------- Submenú ---------- */
+.submenu          { display:none; flex-direction:column; margin-left:.5rem; padding:.5rem 0; border-left:3px solid var(--clr-primary);}
+.submenu-item     { color:var(--clr-dark); font-size:.9rem; padding:.2rem .8rem; border-radius:var(--border-radius-1); transition:color .3s, background .3s;}
+.submenu-item:hover{ color:var(--clr-primary); background:var(--clr-info-light);}
+.menu-item.active + .submenu { display:flex; }
+.submenu-toggle   { font-size:1.5rem; transition:transform .3s;}
+.menu-item.active .submenu-toggle { transform:rotate(180deg); }
+
+/* Iconos Material dentro de botones secundarios */
+.btn-secondary .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-size: 1.25rem;                 /* mismo tamaño que en el menú */
+  line-height: 1;                     /* evita desplazamiento vertical */
+  font-variation-settings: 'FILL' 0;  /* contorno (0) o sólido (1) */
+}
+
+
+/* ---------- Responsive (ancho menor) ---------- */
+@media (max-width:768px){
+  :root{
+    --sidebar-collapsed:48px;
+    --sidebar-expanded:180px;
+  }
+  /* sidebar anchos se ajustan automáticamente con las variables */
+}

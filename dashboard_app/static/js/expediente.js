@@ -1,72 +1,85 @@
-/* expediente.js
-   ——— Vista "Consulta de Expedientes" ———
-*/
+/* expediente.js — versión corregida */
 (() => {
   'use strict';
 
-  /* -------------------- Selectores -------------------- */
-  const $form     = document.getElementById('expediente-form');
-  const $loading  = document.getElementById('loading');
+  /* ---------- Selectores ---------- */
+  const $form    = document.getElementById('expediente-form');
+  const $loading = document.getElementById('loading');
+  const $preview = document.querySelector('#routes-preview tbody');
+  const $full    = document.querySelector('#routes-full tbody');
+  const $toggle  = document.getElementById('toggle-routes');
 
-  /* Spans de detalle mapeados por clave lógica */
+  /* Mapeo de spans */
   const $detail = {
-    expediente: document.getElementById('expediente-info'),
-    fecha:      document.getElementById('fecha-alta'),
-    extracto:   document.getElementById('extracto'),
-    dni:        document.getElementById('dni'),
-    nombre:     document.getElementById('nombre'),
-    afiliado:   document.getElementById('nro-afiliado'),
-    area:       document.getElementById('area'),
-    estado:     document.getElementById('estado')
+    expediente : document.getElementById('expediente-info'),
+    fecha      : document.getElementById('fecha-alta'),
+    extracto   : document.getElementById('extracto'),
+    dni        : document.getElementById('dni'),
+    nombre     : document.getElementById('nombre'),
+    afiliado   : document.getElementById('nro-afiliado'),
+    area       : document.getElementById('area'),
+    estado     : document.getElementById('estado')
   };
 
-  /* -------------------- Datos demo -------------------- */
-  //  Función que genera un objeto “ficticio” a partir de los valores del formulario.
+  /* ---------- Datos demo ---------- */
+  const fakeRoutes = [
+    { ingreso:'28/02/2025', area:'720012', areaOrigen:'DEPTO PERSONAL', ope:'79',
+      operador:'VEGA MONICA', obs:'CON RESOL… 0808/25 ACTA 1074', remito:'-' },
+    { ingreso:'27/02/2025', area:'100100', areaOrigen:'SEC. DIRECTORIO', ope:'684',
+      operador:'MARTINEZ M. EZEQ', obs:'PASE POR INVENTARIO', remito:'-' },
+  ];
+
   const buildFakeData = ({ letra, actuacion, ejercicio }) => ({
-    expediente: `${letra.toUpperCase()}-${actuacion}/${ejercicio}`,
-    fecha:      '03/06/2025',
-    extracto:   'Solicitud de beneficios',
-    dni:        '12.345.678',
-    nombre:     'Juan Pérez',
-    afiliado:   '456789',
-    area:       'Mesa de Entradas',
-    estado:     'En trámite'
+    expediente:`${letra.toUpperCase()}-${actuacion}/${ejercicio}`,
+    fecha:'03/06/2025',
+    extracto:'Solicitud de beneficios',
+    dni:'12.345.678',
+    nombre:'Juan Pérez',
+    afiliado:'456789',
+    area:'Mesa de Entradas',
+    estado:'En trámite'
   });
 
-  /* -------------------- Relleno en la UI -------------------- */
-  const fillDetails = data => {
-    Object.entries(data).forEach(([key, value]) => {
-      if ($detail[key]) $detail[key].textContent = value;
-    });
+  /* ---------- Helpers ---------- */
+  const fillDetails = data =>
+    Object.entries(data).forEach(([k, v]) => { $detail[k].textContent = v; });
+
+  const rowHTML  = r => `<tr><td>${r.ingreso}</td><td>${r.areaOrigen}</td><td>${r.operador}</td><td>${r.obs}</td></tr>`;
+  const fullHTML = r => `<tr><td>${r.ingreso}</td><td>${r.area}</td><td>${r.areaOrigen}</td><td>${r.ope}</td><td>${r.operador}</td><td>${r.obs}</td><td>${r.remito}</td></tr>`;
+
+  const renderRoutes = routes => {
+    $preview.innerHTML = rowHTML(routes[0]);                 // última ruta
+    $full.innerHTML    = routes.map(fullHTML).join('');      // todas
   };
 
-  /* -------------------- Init -------------------- */
-  const init = () => {
-    /* Mostrar estado inicial para que el usuario vea la maqueta */
-    fillDetails(buildFakeData({ letra: 'E', actuacion: '255', ejercicio: '2025' }));
+  /* ---------- Init ---------- */
+  document.addEventListener('DOMContentLoaded', () => {
+    /* 1) Pintar datos demo */
+    fillDetails(buildFakeData({ letra:'E', actuacion:'255', ejercicio:'2025' }));
+    renderRoutes(fakeRoutes);
 
-    /* Manejador de envío */
-    $form.addEventListener('submit', async evt => {
-      evt.preventDefault();
+    /* 2) Toggle tabla completa */
+    $toggle.addEventListener('click', () => {
+      document.getElementById('routes-full').classList.toggle('hidden');
+      $toggle.textContent = $toggle.textContent === 'Ver todo' ? 'Ocultar' : 'Ver todo';
+    });
+
+    /* 3) Manejar búsqueda */
+    $form.addEventListener('submit', async e => {
+      e.preventDefault();
       $loading.classList.remove('hidden');
 
-      // Capturamos valores del formulario
       const payload = {
-        letra:     $form.letra.value.trim()     || '-',
-        actuacion: $form.actuacion.value.trim() || '-',
-        ejercicio: $form.ejercicio.value.trim() || '-'
+        letra:     $form.letra.value || 'E',
+        actuacion: $form.actuacion.value || '255',
+        ejercicio: $form.ejercicio.value || '2025'
       };
 
-      /*  Simulación de “llamada” al backend  */
-      await new Promise(r => setTimeout(r, 600)); // delay ilustrativo
-
-      /* Mostramos datos ficticios basados en la entrada */
+      await new Promise(r => setTimeout(r, 600)); // Simula fetch
       fillDetails(buildFakeData(payload));
+      renderRoutes(fakeRoutes);
 
       $loading.classList.add('hidden');
     });
-  };
-
-  /* Ejecutamos cuando el DOM esté listo */
-  document.addEventListener('DOMContentLoaded', init);
+  });
 })();
