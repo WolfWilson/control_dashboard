@@ -44,44 +44,33 @@
   </section>
 
 
-  <section id="routes">
+<section id="routes">
   <h2>Historial de Rutas</h2>
 
-  <!---- tabla compacta con la ruta más reciente -->
-  <table class="routes-table" id="routes-preview">
+  <!-- UNA sola tabla -->
+  <table class="routes-table" id="routes-table">
     <thead>
       <tr>
-        <th>Ingreso</th><th>Área Origen</th><th>Operador</th><th>Observaciones</th>
+        <th>Ingreso</th><th>Área</th><th>Área Origen</th><th>Ope</th>
+        <th>Operador Origen</th><th>Observaciones</th><th>Remito</th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
 
-<button id="toggle-routes" class="btn-secondary">
-  <span class="material-symbols-outlined">unfold_more</span>
-  <span class="btn-text">Ver todo</span>
-</button>
+  <div class="routes-actions">
+    <button id="toggle-routes" class="btn-secondary">
+      <span class="material-symbols-outlined" id="toggle-icon">unfold_more</span>
+      <span class="btn-text">Ver todo</span>
+    </button>
 
-<button id="print-routes" class="btn-secondary">
-  <span class="material-symbols-outlined">print</span>
-  <span class="btn-text">Imprimir</span>
-</button>
-
-  
-
-  <!---- tabla completa (plegada) -->
-  <div id="routes-full" class="hidden">
-    <table class="routes-table">
-      <thead>
-        <tr>
-          <th>Ingreso</th><th>Área</th><th>Área Origen</th><th>Ope</th>
-          <th>Operador Origen</th><th>Observaciones</th><th>Remito</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <button id="print-routes" class="btn-secondary">
+      <span class="material-symbols-outlined">print</span>
+      <span class="btn-text">Imprimir</span>
+    </button>
   </div>
 </section>
+
 
 </main>
 {% endblock %}

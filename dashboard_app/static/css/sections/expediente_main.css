@@ -170,6 +170,11 @@
 }
 .btn-secondary:hover{ background:var(--clr-primary-variant); }
 
+/* Oculta filas “antiguas” cuando la tabla está colapsada */
+.hidden-row { display: none; }
+
+/* Botones juntos */
+.routes-actions { display: flex; gap: 1rem; justify-content: center; margin-top: .8rem; }
 
 /* (opcional) Ocultar texto en móviles */
 @media(max-width:420px){
