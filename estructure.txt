@@ -1,0 +1,63 @@
+#Extract Project Structure
+
+```
+control_dashboard
+├──dashboard_app
+│   ├──migrations
+│   │   └──__init__.py
+│   ├──services
+│   │   └──db.py
+│   ├──static
+│   │   ├──css
+│   │   │   ├──sections
+│   │   │   │   ├──expediente_main.css
+│   │   │   │   └──menu_aside.css
+│   │   │   ├──estilo_informes.css
+│   │   │   ├──expediente_consulta.css
+│   │   │   ├──expediente.css
+│   │   │   ├──login.css
+│   │   │   ├──pdf_viewer.css
+│   │   │   ├──style_bk.css
+│   │   │   ├──style.css
+│   │   │   └──var_secciones.css
+│   │   ├──img
+│   │   │   ├──Grey-wolf.jpg
+│   │   │   ├──lobo.jpeg
+│   │   │   ├──logo.png
+│   │   │   └──user-male-circle-blue-512.webp
+│   │   └──js
+│   │   │   ├──expediente.js
+│   │   │   └──main.js
+│   ├──templates
+│   │   ├──dashboard_app
+│   │   │   ├──base.html
+│   │   │   ├──blank.html
+│   │   │   ├──dashboard.html
+│   │   │   └──expediente.html
+│   │   ├──registration
+│   │   │   └──login.html
+│   │   └──base_auth.html
+│   ├──__init__.py
+│   ├──admin.py
+│   ├──apps.py
+│   ├──forms.py
+│   ├──models.py
+│   ├──tests.py
+│   ├──urls.py
+│   └──views.py
+├──dashboard_project
+│   ├──__init__.py
+│   ├──asgi.py
+│   ├──ldap_settings.py
+│   ├──settings.py
+│   ├──urls.py
+│   └──wsgi.py
+├──estructure.txt
+├──LICENSE
+├──manage.py
+├──python_ldap-3.4.4-cp312-cp312-win_amd64.whl
+├──README.md
+├──requirements.txt
+├──test_env.py
+└──.gitignore
+```

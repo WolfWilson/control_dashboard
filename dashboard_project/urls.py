@@ -7,4 +7,5 @@ urlpatterns = [
      # auth built-ins (login, logout, password change, etc.)
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('dashboard_app.urls')),
+    path('expedientes/', include('expedientes.urls')),  # ← ESTA línea
 ]

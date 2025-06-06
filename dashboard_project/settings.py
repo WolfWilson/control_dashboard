@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashboard_app',
     'corsheaders',
-    'django_auth_ldap'  # opcional, para admin de grupos
+    'django_auth_ldap' , # opcional, para admin de grupos
+    'expedientes',
 
 ]
 

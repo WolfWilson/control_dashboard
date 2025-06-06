@@ -4,7 +4,10 @@
 {% block title %}Consulta de Expedientes{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/sections/expediente_main.css' %}">
+<link rel="stylesheet"
+      href="{% static 'expedientes/css/expediente_main.css' %}">
+<link rel="stylesheet"
+      href="{% static 'css/var_secciones.css' %}">
 
 <style>  /* ← ajuste local para quitar scroll interno */
   /* solo en esta vista */
@@ -76,5 +79,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/expediente.js' %}"></script>
+<script src="{% static 'expedientes/js/expediente.js' %}"></script>
 {% endblock %}
